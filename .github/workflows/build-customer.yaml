@@ -12,6 +12,9 @@ on:
       - 'sales/customer/kong/**'
       - '.github/workflows/build-customer.yaml'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
 
   oas-to-kong:
@@ -95,7 +98,7 @@ jobs:
         run: git status
 
       - name: Create PR to stage changes for the Kong Gateway in production
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v8
         with:
           title: "❗PRD❗: Staged changes for Kong Gateway PRD deployment"
           labels: "PRD,kong"
